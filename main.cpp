@@ -110,7 +110,27 @@ bool is_green_ZeroCandle_ReturnsFalse()
 {
   Candle candle(0, 0, 0, 0); //Does not exist candle
 
-  return ((candle.is_green() > 0 && CandleExist(candle)) == false);
+  return ((candle.is_green() && CandleExist(candle)) == false);
+}
+
+
+bool is_red_ByGreenCandle_ReturnsFalse()
+{
+  Candle candle(10, 25, 5, 20); //GreenCandle
+
+  return ((candle.is_red() && CandleExist(candle)) == false);
+}
+bool is_red_ByRedCandle_ReturnsTrue()
+{
+  Candle candle(20, 25, 5, 10); //RedCandle
+
+  return ((candle.is_red() && CandleExist(candle)) == true);
+}
+bool is_red_ZeroCandle_ReturnsFalse()
+{
+  Candle candle(0, 0, 0, 0); //Does not exist candle
+
+  return ((candle.is_red() && CandleExist(candle)) == false);
 }
 
 
@@ -136,6 +156,10 @@ void initTests()
   tests.push_back(is_green_ByGreenCandle_ReturnsTrue);
   tests.push_back(is_green_ByRedCandle_ReturnsFalse);
   tests.push_back(is_green_ZeroCandle_ReturnsFalse);
+
+  tests.push_back(is_red_ByGreenCandle_ReturnsFalse);
+  tests.push_back(is_red_ByRedCandle_ReturnsTrue);
+  tests.push_back(is_red_ZeroCandle_ReturnsFalse);
 }
 
 int launchTests()
