@@ -29,10 +29,11 @@ bool BodyContains_PriceOverParameters_ReturnsFalse()
 }
 bool BodyContains_CandleDoesNotExist_ReturnsFalse()
 {
-  Candle candle(20, 10, 10, 30); //DoesNotExist _open > _high, _low < _close
+  Candle candle(20, 10, 10, 30); //Does not exist candle _open > _high, _low < _close
 
   return ((candle.body_contains(0) && CandleExist(candle)) == false);
 }
+
 
 bool Contains_ByDefaultPrice_ReturnsTrue()
 {
@@ -54,6 +55,26 @@ bool Contains_ZeroCandle_ReturnsFalse()
 }
 
 
+bool full_size_ByGreenCandle_ReturnsTrue()
+{
+  Candle candle(10, 25, 5, 20); //GreenCandle
+
+  return ((candle.full_size() > 0 && CandleExist(candle)) == true);
+}
+bool full_size_ByRedCandle_ReturnsTrue()
+{
+  Candle candle(20, 25, 5, 10); //RedCandle
+
+  return ((candle.full_size() > 0 && CandleExist(candle)) == true);
+}
+bool full_size_ZeroCandle_ReturnsFalse()
+{
+  Candle candle(0, 0, 0, 0); //Does not exist candle
+
+  return ((candle.full_size() > 0 && CandleExist(candle)) == false);
+}
+
+
 void initTests()
 {
   tests.push_back(BodyContains_ByDefaultPrice_ReturnsTrue);
@@ -63,6 +84,11 @@ void initTests()
   tests.push_back(Contains_ByDefaultPrice_ReturnsTrue);
   tests.push_back(Contains_PriceOverParameters_ReturnsFalse);
   tests.push_back(Contains_ZeroCandle_ReturnsFalse);
+
+  tests.push_back(full_size_ByGreenCandle_ReturnsTrue);
+  tests.push_back(full_size_ByRedCandle_ReturnsTrue);
+  tests.push_back(full_size_ZeroCandle_ReturnsFalse);
+
 }
 
 int launchTests()
