@@ -75,6 +75,26 @@ bool full_size_ZeroCandle_ReturnsFalse()
 }
 
 
+bool body_size_ByGreenCandle_ReturnsFalse()
+{
+  Candle candle(10, 25, 5, 20); //GreenCandle
+
+  return ((candle.body_size() > 0 && CandleExist(candle)) == true);
+}
+bool body_size_ByRedCandle_ReturnsFalse()
+{
+  Candle candle(20, 25, 5, 10); //RedCandle
+
+  return ((candle.body_size() > 0 && CandleExist(candle)) == true);
+}
+bool body_size_ZeroCandle_ReturnsFalse()
+{
+  Candle candle(0, 0, 0, 0); //Does not exist candle
+
+  return ((candle.body_size() > 0 && CandleExist(candle)) == false);
+}
+
+
 void initTests()
 {
   tests.push_back(BodyContains_ByDefaultPrice_ReturnsTrue);
@@ -88,6 +108,10 @@ void initTests()
   tests.push_back(full_size_ByGreenCandle_ReturnsTrue);
   tests.push_back(full_size_ByRedCandle_ReturnsTrue);
   tests.push_back(full_size_ZeroCandle_ReturnsFalse);
+  
+  tests.push_back(body_size_ByGreenCandle_ReturnsFalse);
+  tests.push_back(body_size_ByRedCandle_ReturnsFalse);
+  tests.push_back(body_size_ZeroCandle_ReturnsFalse);
 
 }
 
