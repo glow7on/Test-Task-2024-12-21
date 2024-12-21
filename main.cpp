@@ -8,35 +8,34 @@
 static std::vector<std::function<bool()>> tests;
 
 //тест 1
-bool test1()
+bool BodyContains_ByDefaultPrice_ReturnsTrue()
 {
-  //пример какого-то теста
-  return 42 == (41 + 1); //passed
+  Candle candle(10, 25, 5, 20); //GreenCandle
+  
+  return (candle.body_contains(20) == true);
 }
 
-//тест 2
-bool test2()
+bool BodyContains_PriceOverParameters_ReturnsFalse()
 {
-  //пример какого-то теста
-  return 42 != (41 + 1); //failed
+  Candle candle(20, 25, 5, 10); //RedCandle
+  
+  return (candle.body_contains(30) == false);
 }
 
-//тест 3
-bool test3()
+bool BodyContains_CandleDoesNotExist_ReturnsFalse()
 {
-  Candle candle{ 0.0, 3.0, 3.0, 3.0 };
-
-  //пример какого-то теста
-  return candle.high == 3.0;
+  Candle candle(20, 10, 10, 30); //DoesNotExist _open > _high, _low < _close
+  
+  return (candle.body_contains(0) == false);
 }
+//
 
 void initTests()
 {
-  tests.push_back(test1);
-  tests.push_back(test2);
-  tests.push_back(test3);
-  //tests.push_back(test4);
-  //tests.push_back(test5);
+  tests.push_back(BodyContains_ByDefaultPrice_ReturnsTrue);
+  tests.push_back(BodyContains_PriceOverParameters_ReturnsFalse);
+  tests.push_back(BodyContains_CandleDoesNotExist_ReturnsFalse);
+  
 }
 
 int launchTests()
