@@ -1,0 +1,3 @@
+C:/Users/user/Desktop/Cpp projects/test-repo/CMakeFiles/testproj.dir
+C:/Users/user/Desktop/Cpp projects/test-repo/CMakeFiles/ALL_BUILD.dir
+C:/Users/user/Desktop/Cpp projects/test-repo/CMakeFiles/ZERO_CHECK.dir

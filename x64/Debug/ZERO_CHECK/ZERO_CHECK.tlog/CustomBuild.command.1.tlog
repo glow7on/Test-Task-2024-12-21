@@ -1,0 +1,10 @@
+^C:\USERS\USER\DESKTOP\CPP PROJECTS\TEST-REPO\CMAKEFILES\082F5B849BBDAE409061A567F454A32D\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/user/Desktop/Cpp projects/test-repo" "-BC:/Users/user/Desktop/Cpp projects/test-repo" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/user/Desktop/Cpp projects/test-repo/testproj.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
